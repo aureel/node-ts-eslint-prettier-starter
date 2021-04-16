@@ -4,7 +4,9 @@
   "description": "TS / Node / Eslint / Prettier project starter",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint . --ext .js,.ts --color",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "author": "Aurel V",
   "license": "ISC",
@@ -24,11 +26,6 @@
     "prettier": "^2.2.1",
     "ts-node-dev": "^1.1.6"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{md,json}": [
       "prettier --write",
@@ -36,7 +33,7 @@
     ],
     "*.{js,ts}": [
       "prettier --write",
-      "eslint --fix",
+      "eslint --ext .js,.ts --fix",
       "git add"
     ]
   }
